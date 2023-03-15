@@ -1,7 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
-
+const cookieParser = require("cookie-parser");
 dotenv.config({ path: "./config/config.env" });
 //connect to DB
 connectDB();
