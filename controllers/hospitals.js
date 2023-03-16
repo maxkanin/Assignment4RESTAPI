@@ -11,7 +11,7 @@ exports.getHospitals = async (req, res, next) => {
     const reqQuery = { ...req.query };
 
     //Fields to exclude
-    const removeFields = ["select", "sort"];
+    const removeFields = ["select", "sort", "page", "limit"];
 
     //loop over remove fields and delete them from reqQuery
     removeFields.forEach((params) => delete reqQuery[params]);
@@ -40,7 +40,10 @@ exports.getHospitals = async (req, res, next) => {
     //Pagination
     const page = parseInt(req.query.page, 10) || 1;
     const limit = parseInt(req.query.limit, 10) || 25;
+    console.log(page, limit);
+
     const startIndex = (page - 1) * limit;
+    console.log(startIndex);
     const endIndex = page * limit;
     const total = await Hospital.countDocuments();
     query = query.skip(startIndex).limit(limit);
