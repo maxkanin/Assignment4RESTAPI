@@ -9,9 +9,9 @@ connectDB();
 const hospitals = require(`./routes/hospitals`);
 const auth = require("./routes/auth");
 const appointments = require("./routes/appointments");
-
+const cors = require("cors");
 const app = express();
-
+app.use(cors());
 // app.get('/',(req,res)=>{
 //     // res.send('<h1>Hello from express</h1>');
 //     //res.send({name:'Brad});
